@@ -3,7 +3,6 @@ import 'package:todolist/models/tarefa.dart';
 import 'package:todolist/screens/formulario.dart';
 
 final String _titulo = 'Minhas Tarefas';
-final String _tooltipConfig = 'Configurações';
 final String _tooltipFiltro = 'Filtrar';
 
 class ListaTarefas extends StatefulWidget {
@@ -20,7 +19,6 @@ class ListaTarefasState extends State<ListaTarefas> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.blueAccent,
         title: Text(_titulo),
         actions: [
           IconButton(
@@ -28,11 +26,30 @@ class ListaTarefasState extends State<ListaTarefas> {
             tooltip: _tooltipFiltro,
             onPressed: null,
           ),
-          IconButton(
-            icon: Icon(Icons.more_vert, color: Colors.white),
-            tooltip: _tooltipConfig,
-            onPressed: (null),
-          ),
+          PopupMenuButton<int>(
+            itemBuilder: (BuildContext context) => [
+              PopupMenuItem(
+                value: 1,
+                child: Text('Um'),
+              ),
+              PopupMenuItem(
+                value: 2,
+                child: Text('Dois'),
+              ),
+              PopupMenuItem(
+                value: 3,
+                child: Text('Três'),
+              ),
+              PopupMenuItem(
+                value: 4,
+                child: Text('Quatro'),
+              ),
+            ],
+            offset: Offset(0, 100),
+            onSelected: (value) {
+              print(value);
+            },
+          )
         ],
       ),
       body: ListView.builder(
@@ -43,12 +60,16 @@ class ListaTarefasState extends State<ListaTarefas> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blueAccent,
         child: Icon(Icons.add),
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return Formulario();
-          })).then(
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) {
+                return Formulario();
+              },
+            ),
+          ).then(
             (tarefaRecebida) => _atualiza(tarefaRecebida),
           );
         },
@@ -84,10 +105,6 @@ class _ItemTarefasState extends State<ItemTarefas> {
           ListTile(
             title: Text(widget._tarefa.assunto),
             subtitle: Text(widget._tarefa.descricao),
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [],
           ),
         ],
       ),

@@ -1,14 +1,10 @@
 class Tarefa {
+  final int id;
   final String assunto;
   final String descricao;
-  bool concluida;
 
-  Tarefa(
-    this.assunto,
-    this.descricao,
-    this.concluida
-  );
+  Tarefa(this.id, this.assunto, this.descricao);
 
   @override
-  String toString() => 'Tarefa(assunto: $assunto, descricao: $descricao)';
+  String toString() => 'Tarefa(id: $id, assunto: $assunto, descricao: $descricao)';
 }

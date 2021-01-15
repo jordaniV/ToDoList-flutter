@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:todolist/components/editor.dart';
-import 'package:todolist/components/switch.dart';
 import 'package:todolist/models/tarefa.dart';
 
 const _campoAssunto = 'Assunto';
@@ -36,8 +35,6 @@ class FormularioTarefaState extends State<Formulario> {
               controlador: _controladorCampoDesc,
               rotulo: _campoDesc,
             ),
-            SwitchConcluida(
-            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(16.0, 0.0, 16.0, 0.0),
               child: SizedBox(
@@ -64,7 +61,7 @@ class FormularioTarefaState extends State<Formulario> {
     final String descricao = _controladorCampoDesc.text;
 
     if (assunto != null && descricao != null) {
-      final tarefaCriada = Tarefa(assunto, descricao, concluida);
+      final tarefaCriada = Tarefa(0, assunto, descricao);
       Navigator.pop(context, tarefaCriada);
     }
   }

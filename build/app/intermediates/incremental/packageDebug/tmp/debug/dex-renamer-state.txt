@@ -1,4 +1,4 @@
-#Sat Dec 26 23:37:44 AMST 2020
+#Fri Jan 15 01:38:08 AMST 2021
 base.0=C\:\\Users\\vini_\\Google Drive\\04 - DESENVOLVIMENTO\\03 - PROJETOS\\todolist\\build\\app\\intermediates\\dex\\debug\\mergeDexDebug\\out\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
